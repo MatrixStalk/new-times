@@ -1,0 +1,249 @@
+-- XDDD --------------------------------------------------------------------------------------------------------------------------------
+function biboran_use1()
+	local spwn = biboran_list1(get_hud())
+	level.start_stop_menu(spwn,true)
+end
+
+class "biboran_list1" (CUIScriptWnd)
+
+function biboran_list1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function biboran_list1:__finalize() end
+
+function biboran_list1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:Init(0,0,1024,768)
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("books\\biboran_list1.xml")
+
+	-- текстура
+	xml:InitStatic("book_text", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+
+	-- определяем доступность кнопки
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+end
+
+function biboran_list1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function biboran_list1:btn1()
+	self:on_quit()
+	soundtrack.shelest()
+	
+end
+
+function biboran_list1:btn2()
+	self:on_quit()
+	soundtrack.shelest()
+	biboran_use2()
+end
+
+function biboran_list1:on_quit()
+	self:GetHolder():start_stop_menu (self,true)
+	self.dlg = nil
+	collectgarbage("collect")
+end
+-----------------------------------------------------------------------------------------------
+
+function biboran_use2()
+	local spwn = biboran_list2(get_hud())
+	level.start_stop_menu(spwn,true)
+end
+
+class "biboran_list2" (CUIScriptWnd)
+
+function biboran_list2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function biboran_list2:__finalize() end
+
+function biboran_list2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:Init(0,0,1024,768)
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("books\\biboran_list2.xml")
+
+	-- текстура
+	xml:InitStatic("book_text", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+
+	-- определяем доступность кнопки
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+end
+
+function biboran_list2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function biboran_list2:btn1()
+	self:on_quit()
+	soundtrack.shelest()
+	biboran_use1()
+end
+
+function biboran_list2:btn2()
+	self:on_quit()
+	soundtrack.shelest()
+	biboran_use3()
+end
+
+function biboran_list2:on_quit()
+	self:GetHolder():start_stop_menu (self,true)
+	self.dlg = nil
+	collectgarbage("collect")
+end
+-----------------------------------------------------------------------------------------------
+
+function biboran_use3()
+	local spwn = biboran_list3(get_hud())
+	level.start_stop_menu(spwn,true)
+end
+
+class "biboran_list3" (CUIScriptWnd)
+
+function biboran_list3:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function biboran_list3:__finalize() end
+
+function biboran_list3:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:Init(0,0,1024,768)
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("books\\biboran_list3.xml")
+
+	-- текстура
+	xml:InitStatic("book_text", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+
+	-- определяем доступность кнопки
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+end
+
+function biboran_list3:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function biboran_list3:btn1()
+	self:on_quit()
+	soundtrack.shelest()
+	biboran_use2()
+end
+
+function biboran_list3:btn2()
+	self:on_quit()
+	soundtrack.shelest()
+end
+
+function biboran_list3:on_quit()
+	self:GetHolder():start_stop_menu (self,true)
+	self.dlg = nil
+	collectgarbage("collect")
+end
+-----------------------------------------------------------------------------------------------
+-- запись сталкера --------------------------------------------------------------------------------------------------------------------------------
+function bd_list_use()
+	local spwn = bd_list(get_hud())
+	level.start_stop_menu(spwn,true)
+end
+
+class "bd_list" (CUIScriptWnd)
+
+function bd_list:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function bd_list:__finalize() end
+
+function bd_list:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:Init(0,0,1024,768)
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("books\\bd_list.xml")
+
+	-- текстура
+	xml:InitStatic("book_text", self)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+end
+
+function bd_list:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function bd_list:on_quit()
+	self:GetHolder():start_stop_menu (self,true)
+	self.dlg = nil
+	collectgarbage("collect")
+end
+-----------------------------------------------------------------------------------------------
